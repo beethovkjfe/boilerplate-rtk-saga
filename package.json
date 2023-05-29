@@ -37,7 +37,7 @@
       "npm run lint:fix",
       "git add --force"
     ],
-    "*.{md,json}": [
+    "*.{json}": [
       "prettier --write",
       "git add --force"
     ]
