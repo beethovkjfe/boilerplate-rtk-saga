@@ -1,0 +1,50 @@
+### What does this PR do?
+
+<!-- Briefly describe what this PR is about -->
+<!-- ex: [example link title](http://example-url.com) -->
+
+### Root Cause
+
+<!-- Describe the cause of the issue -->
+
+### Proposed Changes
+
+<!-- Shortly describe the proposed fix -->
+
+### Jira ticket
+
+[Jira ticket name](http://jira.blinklink.com/issues/...)
+
+### Related issues
+
+<!-- Mention the issue(s) this PR closes or is related to -->
+
+### Types of changes
+
+<!--
+What types of changes does your code introduce to `skillkeepr`?
+
+_Put an `x` in the boxes that apply_
+-->
+
+- [ ] New feature (non-breaking change which adds functionality)
+- [ ] New variation of existing feature (non-breaking change which adds functionality)
+- [ ] Adjustments on existing feature (non-breaking change which fixes an issue)
+- [ ] Bugfix (non-breaking change which fixes an issue)
+- [ ] Breaking change (fix or feature that would cause the implemented application to not work as previous implementation)
+
+### Checklist
+
+<!--
+You can also fill these out after creating the PR. If you're unsure about any of them, don't hesitate to ask. This is simply a reminder of what we are going to look for before merging your code.
+
+_Put an `x` in the boxes that apply._
+-->
+
+- [ ] Lint pass locally with my changes
+- [ ] I have added tests that prove my fix is effective or that my feature works
+- [ ] Related labels has been applied
+
+### Screenshots of Visual Changes (if applicable)
+
+<!-- Add a screenshot of the visual changes. -->
