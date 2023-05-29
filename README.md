@@ -4,8 +4,8 @@ Frontend codebase for Blinklink Web App
 
 ## Requirements
 
-- Node `v10.16.0`
-- NPM `v6.9.0`
+- Node `v16.17.0`
+- NPM `v8.15.0`
 
 ### Setup Instructions:
 
