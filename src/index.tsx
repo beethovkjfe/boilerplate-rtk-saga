@@ -2,25 +2,45 @@ import ReactDOM from 'react-dom/client';
 import { I18nextProvider } from 'react-i18next';
 import { CssBaseline } from '@mui/material';
 import { Provider } from 'react-redux';
-import { HistoryRouter as Router } from 'redux-first-history/rr6';
 import React from 'react';
+import { ConnectedRouter } from 'connected-react-router';
+import { withRouter } from 'react-router-dom';
 
 import i18next from 'config/i18n';
-import { store, history } from 'store/store';
+import { store } from 'store/store';
+import { history } from 'utils';
 
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import AppManagement from './pages/AppManagement';
 
+class ScrollToTop extends React.Component<any> {
+  public componentDidUpdate(prevProps: any) {
+    if (this.props.location !== prevProps.location) {
+      window.scrollTo(0, 0);
+    }
+  }
+  public render() {
+    const { children, location } = this.props;
+    return React.cloneElement(children as any, {
+      location
+    });
+  }
+}
+
+const ScrollToTopHandler = withRouter(ScrollToTop);
+
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
   <Provider store={store}>
-    <Router history={history}>
+    <ConnectedRouter history={history}>
       <I18nextProvider i18n={i18next}>
         <CssBaseline />
-        <AppManagement />
+        <ScrollToTopHandler>
+          <AppManagement />
+        </ScrollToTopHandler>
       </I18nextProvider>
-    </Router>
+    </ConnectedRouter>
   </Provider>
 );
 

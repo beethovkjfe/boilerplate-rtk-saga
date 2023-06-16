@@ -7,6 +7,10 @@ import createCache from '@emotion/cache';
 import { prefixer } from 'stylis';
 import React, { useEffect, useMemo } from 'react';
 
+import { Routes } from 'routes';
+import { hasLoginAccess } from 'config';
+import { localRedirect } from 'utils';
+
 import * as Selectors from './selectors';
 import * as Actions from './slice';
 import { Layout } from './Container';
@@ -18,15 +22,20 @@ const stateSelector = createStructuredSelector({
   mode: Selectors.makeSelectThemeMode(),
   currentLocale: Selectors.makeSelectCurrentLocale()
 });
-const AppManagement = () => {
+const AppManagement = (props: any) => {
   const { mode, currentLocale } = useSelector(stateSelector);
   const dispatch = useDispatch();
 
+  const isUserAuthenticated = hasLoginAccess();
+
   useEffect(() => {
-    setTimeout(() => {
+    if (isUserAuthenticated) {
+      localRedirect('/dashboard');
       dispatch(Actions.fetchUser());
-    });
-  }, [dispatch]);
+    } else {
+      localRedirect('/login');
+    }
+  }, [isUserAuthenticated]);
 
   const theme = useMemo(
     () =>
@@ -43,13 +52,16 @@ const AppManagement = () => {
     key: 'muirtl',
     stylisPlugins: [prefixer, rtlPlugin]
   });
-
   const cacheLtr = createCache({ key: 'muiltr', stylisPlugins: [] });
 
   return (
     <CacheProvider value={currentLocale === 'en' ? cacheLtr : cacheRtl}>
       <ThemeProvider theme={theme}>
-        <Layout dispatch={dispatch} mode={mode} locale={currentLocale} />
+        <Routes
+          layout={Layout}
+          isAuthenticated={isUserAuthenticated}
+          layoutProps={{ dispatch: dispatch, mode, locale: currentLocale }}
+        />
       </ThemeProvider>
     </CacheProvider>
   );

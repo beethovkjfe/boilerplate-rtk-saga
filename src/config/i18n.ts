@@ -8,7 +8,7 @@ i18next.init({
   interpolation: { escapeValue: false },
   fallbackLng: 'en',
   supportedLngs: ['en', 'ar'],
-  debug: true,
+  debug: false,
   resources: {
     en: {
       translation: en

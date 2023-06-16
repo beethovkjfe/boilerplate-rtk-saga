@@ -42,7 +42,7 @@ module.exports = {
     semi: [2, 'always'],
     '@typescript-eslint/semi': ['error'],
     '@typescript-eslint/no-unused-vars': [
-      'error',
+      1,
       {
         args: 'none',
         ignoreRestSiblings: true

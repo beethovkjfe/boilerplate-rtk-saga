@@ -1,39 +1,26 @@
 import { styled } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
-import MuiDrawer from '@mui/material/Drawer';
-import Box from '@mui/material/Box';
-import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import Divider from '@mui/material/Divider';
-import IconButton from '@mui/material/IconButton';
-import Badge from '@mui/material/Badge';
-import Container from '@mui/material/Container';
-import Link from '@mui/material/Link';
+import {
+  Drawer as MuiDrawer,
+  AppBar as MuiAppBar,
+  Box,
+  AppBarProps as MuiAppBarProps,
+  Toolbar,
+  Typography,
+  Divider,
+  IconButton,
+  Switch
+} from '@mui/material';
+
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import NotificationsIcon from '@mui/icons-material/Notifications';
+
 import { useTranslation } from 'react-i18next';
 import React, { useState } from 'react';
-import { Switch } from '@mui/material';
 import i18n from 'config/i18n';
 
 import * as Actions from '../../slice';
 
 import { LayoutProps } from './types';
-
-function Copyright(props: any) {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
 
 const drawerWidth = 240;
 
@@ -83,22 +70,22 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: prop => prop !== 'open' })
   }
 }));
 
-const Layout = ({ dispatch, locale }: LayoutProps) => {
+const Layout = ({ dispatch, locale, children }: LayoutProps) => {
   const [open, setOpen] = useState(true);
   const toggleDrawer = () => {
     setOpen(!open);
   };
   const { t } = useTranslation();
 
-  const handleLanguage = () => {
+  const handleLanguage = (_: any, isAr: boolean) => {
     dispatch(Actions.setCurrentLocale(locale === 'en' ? 'ar' : 'en'));
     i18n.changeLanguage(locale === 'en' ? 'ar' : 'en');
     document.documentElement.lang = i18n.language;
+    document.documentElement.style.direction = isAr ? 'rtl' : 'ltr';
   };
 
   return (
     <Box sx={{ display: 'flex' }}>
-      <CssBaseline />
       <AppBar position="absolute" open={open}>
         <Toolbar
           sx={{
@@ -121,11 +108,6 @@ const Layout = ({ dispatch, locale }: LayoutProps) => {
             {t('dashboard')}
           </Typography>
           <Switch checked={locale === 'ar'} onChange={handleLanguage} inputProps={{ 'aria-label': 'controlled' }} />
-          <IconButton color="inherit">
-            <Badge badgeContent={4} color="secondary">
-              <NotificationsIcon />
-            </Badge>
-          </IconButton>
         </Toolbar>
       </AppBar>
       <Drawer variant="permanent" open={open}>
@@ -149,14 +131,11 @@ const Layout = ({ dispatch, locale }: LayoutProps) => {
           backgroundColor: theme =>
             theme.palette.mode === 'light' ? theme.palette.grey[100] : theme.palette.grey[900],
           flexGrow: 1,
-          height: '100vh',
           overflow: 'auto'
         }}
       >
         <Toolbar />
-        <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-          <Copyright sx={{ pt: 4 }} />
-        </Container>
+        {children}
       </Box>
     </Box>
   );
