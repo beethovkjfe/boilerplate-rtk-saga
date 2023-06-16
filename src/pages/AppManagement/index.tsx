@@ -10,6 +10,7 @@ import React, { useEffect, useMemo } from 'react';
 import { Routes } from 'routes';
 import { hasLoginAccess } from 'config';
 import { localRedirect } from 'utils';
+import { defaultTheme } from 'theme';
 
 import * as Selectors from './selectors';
 import * as Actions from './slice';
@@ -40,12 +41,10 @@ const AppManagement = (props: any) => {
   const theme = useMemo(
     () =>
       createTheme({
-        palette: {
-          mode
-        },
+        ...defaultTheme,
         direction: currentLocale === 'en' ? 'ltr' : 'rtl'
       }),
-    [mode, currentLocale]
+    [mode, currentLocale, defaultTheme]
   );
 
   const cacheRtl = createCache({
