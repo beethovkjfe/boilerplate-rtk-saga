@@ -10,6 +10,7 @@ import React, { useEffect, useMemo } from 'react';
 import { Routes } from 'routes';
 import { hasLoginAccess } from 'config';
 import { localRedirect } from 'utils';
+import { defaultTheme } from 'theme';
 
 import * as Selectors from './selectors';
 import * as Actions from './slice';
@@ -25,6 +26,7 @@ const stateSelector = createStructuredSelector({
 const AppManagement = (props: any) => {
   const { mode, currentLocale } = useSelector(stateSelector);
   const dispatch = useDispatch();
+  const { palette, ...rest } = defaultTheme;
 
   const isUserAuthenticated = hasLoginAccess();
 
@@ -40,12 +42,11 @@ const AppManagement = (props: any) => {
   const theme = useMemo(
     () =>
       createTheme({
-        palette: {
-          mode
-        },
+        palette: { ...palette, mode },
+        ...rest,
         direction: currentLocale === 'en' ? 'ltr' : 'rtl'
       }),
-    [mode, currentLocale]
+    [mode, currentLocale, defaultTheme]
   );
 
   const cacheRtl = createCache({

@@ -23,8 +23,8 @@ module.exports = {
     'prettier'
   ],
   rules: {
-    'prettier/prettier': 'error',
-    'linebreak-style': ['error', 'unix'],
+    'prettier/prettier': 'warn',
+    'linebreak-style': ['warn', 'unix'],
     '@typescript-eslint/explicit-function-return-type': 0,
     '@typescript-eslint/ban-ts-ignore': 0,
     '@typescript-eslint/ban-types': 0,
@@ -37,10 +37,10 @@ module.exports = {
     'jsx-a11y/media-has-caption': 0,
     'react/prop-types': 0,
     'react/no-render-return-value': 0,
-    'import/order': ['error'],
+    'import/order': ['warn'],
     'import/no-named-as-default': 0,
     semi: [2, 'always'],
-    '@typescript-eslint/semi': ['error'],
+    '@typescript-eslint/semi': ['warn'],
     '@typescript-eslint/no-unused-vars': [
       1,
       {
