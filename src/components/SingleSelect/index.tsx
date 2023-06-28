@@ -2,23 +2,23 @@ import { FormControl, FormHelperText, FormLabel, MenuItem, Select } from '@mui/m
 import { Controller } from 'react-hook-form';
 import React from 'react';
 
-import Placeholder from './Placeholder';
+import Placeholder from '../Placeholder';
+import { SingleSelectProps } from './types';
 
-function SingleSelect(props: any) {
-  const {
-    controllerName,
-    control,
-    label,
-    placeholder,
-    id,
-    errors,
-    items,
-    propertyId = 'id',
-    propertyText = 'name'
-  } = props;
+function SingleSelect({
+  control,
+  label,
+  placeholder,
+  id,
+  errors,
+  items,
+  propertyId = 'id',
+  propertyText = 'name',
+  name
+}: SingleSelectProps) {
   return (
     <Controller
-      name={controllerName}
+      name={name}
       control={control}
       render={({ field }) => (
         <FormControl>
@@ -47,7 +47,7 @@ function SingleSelect(props: any) {
               </MenuItem>
             ))}
           </Select>
-          <FormHelperText error={!!errors[controllerName]}>{errors[controllerName]?.message}</FormHelperText>
+          <FormHelperText error={!!errors[name]}>{errors[name]?.message}</FormHelperText>
         </FormControl>
       )}
     />

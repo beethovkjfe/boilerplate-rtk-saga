@@ -24,7 +24,7 @@ const AuthenticationManagement = () => {
 
   const schema = yup.object().shape(schemaObject);
 
-  const { control, formState, watch, reset, setValue } = useForm({
+  const { control, formState, watch, reset, setValue, register } = useForm({
     mode: 'onChange',
     defaultValues,
     resolver: yupResolver(schema)
@@ -44,21 +44,9 @@ const AuthenticationManagement = () => {
 
             <Typography>Please enter your login details </Typography>
 
-            <TextInput
-              controllerName="email"
-              control={control}
-              errors={errors}
-              label="Email"
-              placeholder="Enter your Email address"
-            />
+            <TextInput {...register('name')} label="Email" placeholder="Enter your Email address" />
 
-            <TextInput
-              controllerName="password"
-              control={control}
-              errors={errors}
-              label="Password"
-              placeholder="Enter your password address"
-            />
+            <TextInput label="Password" placeholder="Enter your password address" />
 
             <LoadingStateButton
               // type="button"

@@ -26,6 +26,7 @@ const stateSelector = createStructuredSelector({
 const AppManagement = (props: any) => {
   const { mode, currentLocale } = useSelector(stateSelector);
   const dispatch = useDispatch();
+  const { palette, ...rest } = defaultTheme;
 
   const isUserAuthenticated = hasLoginAccess();
 
@@ -41,7 +42,8 @@ const AppManagement = (props: any) => {
   const theme = useMemo(
     () =>
       createTheme({
-        ...defaultTheme,
+        palette: { ...palette, mode },
+        ...rest,
         direction: currentLocale === 'en' ? 'ltr' : 'rtl'
       }),
     [mode, currentLocale, defaultTheme]

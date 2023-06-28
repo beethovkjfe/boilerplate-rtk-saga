@@ -2,33 +2,26 @@ import { FormControl, FormHelperText, FormLabel, TextField } from '@mui/material
 import { Controller } from 'react-hook-form';
 import React from 'react';
 
-interface TextInputProps {
-  control: any;
-  controllerName: string;
-  label: string;
-  placeholder: string;
-  errors: any;
-}
+import { TextInputProps } from './types';
 
-const TextInput = ({ controllerName, control, label, placeholder, errors }: TextInputProps) => {
+const TextInput = ({ name, control, label, placeholder, errors, variant = 'filled' }: TextInputProps) => {
   return (
     <Controller
       control={control}
-      name={controllerName}
+      name={name}
       render={({ field }) => (
         <FormControl>
           <FormLabel className="font-semibold mb-6">{label}</FormLabel>
           <TextField
             {...field}
-            // label={label}
             placeholder={placeholder}
-            variant="filled"
+            variant={variant}
             fullWidth
             InputLabelProps={{ shrink: true }}
-            error={!!errors[controllerName]}
-            helperText={errors?.[controllerName]?.message}
+            error={!!errors[name]}
+            helperText={errors?.[name]?.message}
           />
-          <FormHelperText error={!!errors[controllerName]}>{errors[controllerName]?.message}</FormHelperText>
+          <FormHelperText error={!!errors[name]}>{errors[name]?.message}</FormHelperText>
         </FormControl>
       )}
     />

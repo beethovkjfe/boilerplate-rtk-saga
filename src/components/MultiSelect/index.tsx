@@ -2,23 +2,25 @@ import { Box, Chip, FormControl, FormHelperText, FormLabel, MenuItem, Select } f
 import { Controller } from 'react-hook-form';
 import React from 'react';
 
-import Placeholder from './Placeholder';
+import Placeholder from '../Placeholder';
 
-function MultiSelect(props: any) {
-  const {
-    controllerName,
-    control,
-    label,
-    placeholder,
-    id,
-    errors,
-    items,
-    propertyId = 'id',
-    propertyText = 'name'
-  } = props;
+import { MultiSelectProps } from './types';
+
+function MultiSelect({
+  control,
+  label,
+  placeholder,
+  id,
+  errors,
+  items,
+  propertyId = 'id',
+  propertyText = 'name',
+  name,
+  variant = 'filled'
+}: MultiSelectProps) {
   return (
     <Controller
-      name={controllerName}
+      name={name}
       control={control}
       render={({ field }) => (
         <FormControl>
@@ -28,7 +30,7 @@ function MultiSelect(props: any) {
           <Select
             {...field}
             displayEmpty
-            variant="filled"
+            variant={variant}
             multiple
             labelId={id}
             required
@@ -58,7 +60,7 @@ function MultiSelect(props: any) {
               </MenuItem>
             ))}
           </Select>
-          <FormHelperText error={!!errors[controllerName]}>{errors[controllerName]?.message}</FormHelperText>
+          <FormHelperText error={!!errors[name]}>{errors[name]?.message}</FormHelperText>
         </FormControl>
       )}
     />

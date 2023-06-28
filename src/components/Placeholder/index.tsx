@@ -1,6 +1,8 @@
 import React from 'react';
 
-function Placeholder(props: any) {
+import { PlaceholderProps } from './types';
+
+function Placeholder(props: PlaceholderProps) {
   const { text } = props;
   return <div className="custom-placeholder">{text}</div>;
 }
