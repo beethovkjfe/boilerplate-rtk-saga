@@ -2,7 +2,7 @@ export const defaultTheme = {
   palette: {
     primary: {
       main: '#2E9EE4',
-      light: '#2E9EE4',
+      light: '#ABD8F4',
       dark: '#1A8AD0'
     },
     secondary: {
@@ -14,8 +14,8 @@ export const defaultTheme = {
       primary: '#525B6E'
     },
     success: {
-      main: '#2E9EE4',
-      light: '#C5F1C1',
+      main: '#00C51F',
+      light: '#E5F9E9',
       dark: '#2E7E25'
     },
     error: {

@@ -9,12 +9,11 @@ import React, { useEffect, useMemo } from 'react';
 
 import { Routes } from 'routes';
 import { hasLoginAccess } from 'config';
-import { localRedirect } from 'utils';
 import { defaultTheme } from 'theme';
 
 import * as Selectors from './selectors';
 import * as Actions from './slice';
-import { Layout } from './Container';
+import { Layout } from './container';
 
 const stateSelector = createStructuredSelector({
   loading: Selectors.makeSelectLoading(),
@@ -32,10 +31,7 @@ const AppManagement = (props: any) => {
 
   useEffect(() => {
     if (isUserAuthenticated) {
-      localRedirect('/dashboard');
       dispatch(Actions.fetchUser());
-    } else {
-      localRedirect('/login');
     }
   }, [isUserAuthenticated]);
 
