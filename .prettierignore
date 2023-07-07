@@ -5,3 +5,5 @@ yarn.lock
 package.json
 *.scss.d.ts
 .prettierignore
+src/.icons
+src/.images
