@@ -13,7 +13,7 @@ import { defaultTheme } from 'theme';
 
 import * as Selectors from './selectors';
 import * as Actions from './slice';
-import { Layout } from './container';
+import { Layout } from './containers';
 
 const stateSelector = createStructuredSelector({
   loading: Selectors.makeSelectLoading(),
@@ -49,7 +49,7 @@ const AppManagement = (props: any) => {
     key: 'muirtl',
     stylisPlugins: [prefixer, rtlPlugin]
   });
-  const cacheLtr = createCache({ key: 'muiltr', stylisPlugins: [] });
+  const cacheLtr = createCache({ key: 'muiltr', stylisPlugins: [prefixer] });
 
   return (
     <CacheProvider value={currentLocale === 'en' ? cacheLtr : cacheRtl}>
