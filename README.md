@@ -1,6 +1,4 @@
-## BLINKLINK WEB UI
-
-Frontend codebase for Blinklink Web App
+## Boilerplate RTK & saga
 
 ## Requirements
 
@@ -9,9 +7,9 @@ Frontend codebase for Blinklink Web App
 
 ### Setup Instructions:
 
-`git clone git@github.com:beethovkjfe/blinklink-web-app.git`
+`git clone git@github.com:beethovkjfe/boilerplate-rtk-saga.git`
 
-`cd blinklink-web-ui`
+`cd boilerplate-rtk-saga`
 
 `npm install --legacy-peer-deps`
 
@@ -23,12 +21,12 @@ Create `.env` file inroot folder. (Required keys can be found in `.env.sample` f
 
 Then go to 
 
-`dev.blinklink.com:3000` 
+`localhost.com:3000` 
 
 For using API's, follow the given instructions.
 
 1.  `sudo nano /etc/hosts`
-2.  Add `${ip} api.blinklink.com`, where ip belongs to API of hosted machine.
+2.  Add `${ip} api.domain.com`, where ip belongs to API of hosted machine.
 3.  Save and Exit.
 
 ### Test
