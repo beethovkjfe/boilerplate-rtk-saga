@@ -1,10 +1,10 @@
 {
-  "name": "blinklink-web-app",
+  "name": "boilerplate-rtk-saga",
   "version": "0.0.1",
   "private": true,
   "repository": {
     "type": "git",
-    "url": "git@github.com:beethovkjfe/blinklink-web-app.git"
+    "url": "git@github.com:beethovkjfe/boilerplate-rtk-saga.git"
   },
   "dependencies": {
     "@emotion/react": "^11.11.0",
