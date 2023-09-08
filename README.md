@@ -21,7 +21,7 @@ Create `.env` file inroot folder. (Required keys can be found in `.env.sample` f
 
 Then go to 
 
-`localhost.com:3000` 
+`localhost:3000` 
 
 For using API's, follow the given instructions.
 
